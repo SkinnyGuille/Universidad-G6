@@ -24,11 +24,11 @@ import universidadg6.entidades.Alumno;
  * @author MI EQUIPO
  */
 public class AlumnoData {
-
-    
-    private Connection con=null;
     
     
+    
+    
+    private Connection con=null; 
     public AlumnoData(){
         con=Conexion.getConexion();
       
@@ -63,8 +63,6 @@ public class AlumnoData {
     } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "error al acceder a la tabla alumno");
     }}
-    
-    
     public void modificarAlumno(Alumno alumno) {
         String query = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?"
                 + " WHERE idAlumno=?";
@@ -91,8 +89,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error para modificar datos del alumno"+ e.getMessage());
         }
     }
-
-     public void borradoLogicoAlumno(int idAlumno) {
+    public void borradoLogicoAlumno(int idAlumno) {
         String query = "UPDATE alumno SET estado = false WHERE idAlumno = ?";
         
         try {
@@ -113,10 +110,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al borrar el alumno");
         }
     }
-     
-     
-       
-     public Alumno buscarAlumnoPorId(int idAlumno) {
+    public Alumno buscarAlumnoPorId(int idAlumno) {
         Alumno alumno = null;
         String query = "SELECT * FROM alumno WHERE idAlumno = ?";
         
@@ -146,11 +140,7 @@ public class AlumnoData {
         
         return alumno;
     }
-     
-     
-     
-        
-   public Alumno buscarAlumnoPorDni(int dni) {
+    public Alumno buscarAlumnoPorDni(int dni) {
         Alumno alumno = null;
         String query = "SELECT * FROM alumno WHERE dni = ?";
         
@@ -185,10 +175,7 @@ public class AlumnoData {
         
         return alumno;
     }
-        
-        
-    
-      public List<Alumno> listaAlumnos() {
+    public List<Alumno> listaAlumnos() {
         List<Alumno> listaAlumnos = new ArrayList<>();
         String query = "SELECT * FROM alumno WHERE estado = 1";
         

@@ -5,6 +5,7 @@
 package universidadg6.accesoadatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,28 +38,101 @@ public class MateriaData {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Nose Agrego materia");
         }
     }
     
     public void modificarMateria(Materia materia) {
-        // codigo para actualizar una materia en la base de datos
+         String sql = "UPDATE materia SET  nombre=?, año=?, estado=? WHERE idmateria=?";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setString(1,materia.getNombre());
+            ps.setInt(2,materia.getAnioMateria());
+            ps.setBoolean(3,materia.isActivo());
+            
+             int materias=ps.executeUpdate();
+             if(materias>0){
+                 JOptionPane.showMessageDialog(null, "Materia Modificada");       
+             }else{
+             JOptionPane.showMessageDialog(null, "No se encontro Materia");
+             }
+    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Nose Modifico materia");
+        }
+         
+              
     }
     
-    public void eliminarMateria(int idMateria) {
-        // codigo para marcar una materia como eliminada en la base de datos
+    public void eliminarMateria(int idmateria) {
+        
+        String sql = "UPDATE materia SET estado = false WHERE idmateria = ?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, idmateria);
+            int materias=ps.executeUpdate();
+            if(materias>0){
+                JOptionPane.showMessageDialog(null, "Se Elimino la Materi (Forma Logica)");
+            }
+            
+        } catch (SQLException ex) {   
+            JOptionPane.showMessageDialog(null, "Nose Elimino materia");
+        }
     }
     
-    public Materia buscarMateria(int idMateria) {
-        // codigo para buscar una materia por ID en la base de datos
-        return null;
-        // codigo para buscar una materia por ID en la base de datos
+    public Materia buscarMateria(int idmateria) {
+        Materia materias = null;
+        String sql = "SELECT * FROM alumno WHERE idAlumno = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idmateria);
+            
+            ResultSet rs= ps.executeQuery();
+            if (rs.next()) {
+                int año = rs.getInt("año");
+                String nombre = rs.getString("nombre");
+                boolean estado = rs.getBoolean("estado");
+
+          
+                materias = new Materia(nombre,año,estado);
+                materias.setIdMateria(idmateria);
+            }
+            
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Nose encontro materia");
+           
+        }
+        
+        return materias;
     }
     
     public List<Materia> listarMaterias() {
-        // codigo para obtener una lista de todas las materias activas en la base de datos
-        return null;
-        // codigo para obtener una lista de todas las materias activas en la base de datos
+        List<Materia> materias = new ArrayList<>();
+        String sql = "SELECT * FROM materia WHERE estado = 1";
+        
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                String nombre= rs.getString("nombre");
+                int año = rs.getInt("año");
+                boolean estado = rs.getBoolean("estado");
+                
+                Materia mate = new Materia();
+                mate.setNombre(nombre);
+                mate.setAnioMateria(año);
+                mate.setActivo(estado);
+                
+                materias.add(mate);
+            }
+            ps.close();
+            rs.close();            
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Nose encontro materia");    
     }
-    
+        return materias;
+}
 }

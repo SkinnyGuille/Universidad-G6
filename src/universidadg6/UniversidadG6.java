@@ -12,6 +12,7 @@ import universidadg6.accesoadatos.AlumnoData;
 import universidadg6.accesoadatos.Conexion;
 import universidadg6.accesoadatos.MateriaData;
 import universidadg6.entidades.Alumno;
+import universidadg6.entidades.Inscripcion;
 import universidadg6.entidades.Materia;
 
 /**
@@ -25,7 +26,9 @@ public class UniversidadG6 {
      */
     public static void main(String[] args) {
       Connection conex= Conexion.getConexion();   
-
+      
+////////    PRUEBAS DE LA CLASE ALUMNODATA////////////////
+    
         //AGREGAR ALUMNOS
 //        Alumno a1 = new Alumno(12351777, "Lautaro", "Rodriguez", LocalDate.of(1996, 7, 21), true);
 //        Alumno a2 = new Alumno(66651777, "Gustavo", "Rosales", LocalDate.of(1997, 3, 6), true);
@@ -33,18 +36,16 @@ public class UniversidadG6 {
 //          alumnoData.guardarAlumno(a1);
 //          alumnoData.guardarAlumno(a2);
 
-        //  MODIFICAR ALUMNOS
-      
-      Alumno sebAlumno=new Alumno(4,12351777, "Lautaro", "Rodriguez", LocalDate.of(1996, 8, 21), false);
-      AlumnoData alumnoData= new AlumnoData();
-      alumnoData.modificarAlumno(sebAlumno);
+//        //  MODIFICAR ALUMNOS
+//      
+//      Alumno sebAlumno=new Alumno(4,12351777, "Lautaro", "Rodriguez", LocalDate.of(1996, 8, 21), false);
+//      AlumnoData alumnoData= new AlumnoData();
+//      alumnoData.modificarAlumno(sebAlumno);
 
-
-        //borrar ALUMNOS
+        //BORRAR ALUMNOS
         // alumnoData.borradoLogicoAlumno(1);
         
-        
-        //mostrar ALUMNOS por ID
+        //MOSTRAR ALUMNOS por ID
 //        Alumno alumnoEncontradoID=alumnoData.buscarAlumnoPorId(1);
 //        System.out.println("Datos del alumno");
 //        System.out.println("    ");
@@ -54,7 +55,7 @@ public class UniversidadG6 {
 //        System.out.println("    ");
 
 
-        //  mostrar ALUMNOS por DNI
+        //  MOSTRAR ALUMNOS por DNI
 //        Alumno alumnoEncontradoDNI = alumnoData.buscarAlumnoPorDni(12351777);
 //        if (alumnoEncontradoDNI != null) {
 //            System.out.println("Datos del alumno por DNI");
@@ -67,19 +68,28 @@ public class UniversidadG6 {
 //            System.out.println(" No encontré nada che por DNI...");
 //        }
 
-//          mostrar LISTA ALUMNOS
+          //MOSTRAR LISTA ALUMNOS
 //       AlumnoData alumnosData= new AlumnoData();
 //        List<Alumno> listaAlumnos = alumnosData.listaAlumnos();
 //
 //      for (Alumno alumno : listaAlumnos) {
 //          System.out.println("Nombre: " + alumno.getNombre() + ", Apellido "+ alumno.getApellido()+" ID: " + alumno.getIdAlumno() + ", DNI: " + alumno.getDni());
 //}
-        // Para guardar Materia
+        // GUARDAR MATERIA 
 
 //        Materia m1 = new Materia("Matematica", 2023, true);
 //        MateriaData materiaData = new MateriaData();
 //        materiaData.guardarMateria(m1);
+    
+////////    PRUEBAS DE LA CLASE INSCRIPCIONDATA////////////////
 
+        // CARGAR INSCRIPCION 
+      
+     AlumnoData ad= new AlumnoData();
+     MateriaData md=new MateriaData();
+     Inscripcion ins=new Inscripcion();
+     
+     
         
     }
 }
