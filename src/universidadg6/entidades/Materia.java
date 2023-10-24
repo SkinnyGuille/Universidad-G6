@@ -2,7 +2,7 @@
 package universidadg6.entidades;
 
 public class Materia {
-    private int idMateria;
+    private int idmateria;
     private String nombre;
     private int anioMateria;
     private boolean activo;
@@ -10,8 +10,8 @@ public class Materia {
     public Materia() {
     }
 
-    public Materia(int idMateria, String nombre, int anioMateria, boolean activo) {
-        this.idMateria = idMateria;
+    public Materia(int idmateria, String nombre, int anioMateria, boolean activo) {
+        this.idmateria = idmateria;
         this.nombre = nombre;
         this.anioMateria = anioMateria;
         this.activo = activo;
@@ -24,11 +24,11 @@ public class Materia {
     }
 
     public int getIdMateria() {
-        return idMateria;
+        return idmateria;
     }
 
     public void setIdMateria(int idMateria) {
-        this.idMateria = idMateria;
+        this.idmateria = idMateria;
     }
 
     public String getNombre() {
@@ -57,7 +57,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anioMateria=" + anioMateria + ", activo=" + activo + '}';
+        return "Materia{" + "idMateria=" + idmateria + ", nombre=" + nombre + ", anioMateria=" + anioMateria + ", activo=" + activo + '}';
     }
     
     

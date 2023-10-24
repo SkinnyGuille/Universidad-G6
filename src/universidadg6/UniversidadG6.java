@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 import universidadg6.accesoadatos.AlumnoData;
 import universidadg6.accesoadatos.Conexion;
+import universidadg6.accesoadatos.InscripcionData;
 import universidadg6.accesoadatos.MateriaData;
 import universidadg6.entidades.Alumno;
 import universidadg6.entidades.Inscripcion;
@@ -75,21 +76,41 @@ public class UniversidadG6 {
 //      for (Alumno alumno : listaAlumnos) {
 //          System.out.println("Nombre: " + alumno.getNombre() + ", Apellido "+ alumno.getApellido()+" ID: " + alumno.getIdAlumno() + ", DNI: " + alumno.getDni());
 //}
-        // GUARDAR MATERIA 
+        
+    
+////////    PRUEBAS DE LA CLASE MATERIADATA////////////////
+
+            // GUARDAR MATERIA 
 
 //        Materia m1 = new Materia("Matematica", 2023, true);
+//        Materia m2 = new Materia("Lengua", 2023, true);
+//        Materia m3 = new Materia("Ingles", 2023, true);
 //        MateriaData materiaData = new MateriaData();
-//        materiaData.guardarMateria(m1);
-    
+//        materiaData.guardarMateria(m3);
+//        materiaData.guardarMateria(m2);
+//        
+           //BUSCAR MATERIA 
+//     MateriaData md= new MateriaData();
+//     Materia m1 = md.buscarMateria(5);
+//        System.out.println("Datos de materia por id");
+//         System.out.println("    ");
+//            System.out.println("Nombre: " + m1.getNombre() );
+//          System.out.println("Año: " + m1.getAnioMateria() );
+
+
 ////////    PRUEBAS DE LA CLASE INSCRIPCIONDATA////////////////
 
         // CARGAR INSCRIPCION 
-      
-     AlumnoData ad= new AlumnoData();
-     MateriaData md=new MateriaData();
-     Inscripcion ins=new Inscripcion();
-     
-     
-        
+//      
+//     AlumnoData ad= new AlumnoData();
+//     MateriaData md=new MateriaData();
+//     InscripcionData ins=new InscripcionData();
+//     
+//     Alumno Gustavo = ad.buscarAlumnoPorId(5);
+//     Materia m1 = md.buscarMateria(6);
+//     Inscripcion inscri =  new Inscripcion(Gustavo,m1,9);
+//     ins.guardarInscripcion(inscri);
+
+
     }
 }

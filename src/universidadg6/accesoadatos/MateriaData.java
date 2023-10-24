@@ -21,11 +21,11 @@ public class MateriaData {
     
     public void guardarMateria(Materia materia){
         
-        String sql ="INSERT INTO `materia`(`nombre`, `año`, `estado`)"
+        String query ="INSERT INTO `materia`(`nombre`, `año`, `estado`)"
                 + "VALUES(?,?,?)";
         
         try {
-            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
             ps.setBoolean(3, materia.isActivo());
@@ -82,27 +82,27 @@ public class MateriaData {
     
     public Materia buscarMateria(int idmateria) {
         Materia materias = null;
-        String sql = "SELECT * FROM alumno WHERE idAlumno = ?";
+        String sql = "SELECT nombre, año, estado FROM materia WHERE idmateria = ? AND estado = 1";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idmateria);
-            
             ResultSet rs= ps.executeQuery();
+            
             if (rs.next()) {
-                int año = rs.getInt("año");
-                String nombre = rs.getString("nombre");
-                boolean estado = rs.getBoolean("estado");
-
-          
-                materias = new Materia(nombre,año,estado);
+                materias = new Materia();
                 materias.setIdMateria(idmateria);
+                materias.setNombre(rs.getString("nombre"));
+                materias.setAnioMateria(rs.getInt("año"));
+                materias.setActivo(true);
+            }else{
+            JOptionPane.showMessageDialog(null, "Nose existe materia");
             }
             
             rs.close();
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Nose encontro materia");
+            JOptionPane.showMessageDialog(null, "Nose se accedio a la tabla materia");
            
         }
         
