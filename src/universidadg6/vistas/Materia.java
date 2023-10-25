@@ -54,8 +54,6 @@ public class Materia extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado: ");
 
-        jTextField3.setText("jTextField3");
-
         jButton1.setText("Buscar");
 
         jButton2.setText("Nuevo");
