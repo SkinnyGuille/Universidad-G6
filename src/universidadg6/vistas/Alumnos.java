@@ -173,7 +173,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTdniActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
         try {
            Integer dni = Integer.parseInt(jTdni.getText());
            alumnoactual = aludata.buscarAlumnoPorDni(dni);
