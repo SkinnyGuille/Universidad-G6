@@ -96,7 +96,13 @@ public class UniversidadG6 {
 //         System.out.println("    ");
 //            System.out.println("Nombre: " + m1.getNombre() );
 //          System.out.println("Año: " + m1.getAnioMateria() );
-
+///     //LISTAR MATERIA
+         MateriaData materialista = new MateriaData();
+        List<Materia> listaMateria = materialista.listarMaterias();
+//
+      for (Materia materia : listaMateria) {
+        System.out.println("Nombre: " + materia.getNombre() + ", Año "+ materia.getAnioMateria()+", ID: " + materia.getIdMateria());
+}      
 
 ////////    PRUEBAS DE LA CLASE INSCRIPCIONDATA////////////////
 
