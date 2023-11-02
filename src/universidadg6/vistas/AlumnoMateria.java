@@ -156,8 +156,7 @@ private Connection con;
             jCBMateria.addItem(i);
         }
         //
-    }
-    
+    }  
     public void borrarlista(){
         int a=modelo.getRowCount()-1;
             for(int i=a;i>=0;i--){
@@ -165,7 +164,6 @@ private Connection con;
             }
             //
     }
- 
     private void llenarTabla() {
     borrarlista();
     MateriaData mat=new MateriaData();

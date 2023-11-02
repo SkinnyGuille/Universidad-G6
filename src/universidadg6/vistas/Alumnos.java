@@ -4,6 +4,8 @@
  */
 package universidadg6.vistas;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 import universidadg6.accesoadatos.AlumnoData;
 import universidadg6.entidades.Alumno;
@@ -47,7 +49,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         JRBEstado = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new org.netbeans.modules.form.InvalidComponent();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,6 +68,12 @@ public class Alumnos extends javax.swing.JInternalFrame {
         jTDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTDniActionPerformed(evt);
+            }
+        });
+
+        jTNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTNombreActionPerformed(evt);
             }
         });
 
@@ -174,6 +182,51 @@ public class Alumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTDniActionPerformed
 
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt){
+        
+        if(alumnoactual!=null){
+            
+            aludata.borradoLogicoAlumno(alumnoactual.getIdAlumno());
+            alumnoactual=null;
+            Limpiar();
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay alumono seleccionado");
+        }
+    }
+    
+   private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt){
+   
+       Integer dni= Integer.parseInt(jTDni.getText());
+       String nombre= jTNombre.getText();
+       String apellido= jTApellido.getText();
+       if(nombre.isEmpty() || apellido.isEmpty()){
+       JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+       return;
+       }
+       java.util.Date sfecha= jDateChooser1.getDate();
+       LocalDate fechaNac= sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+       Boolean estado= JRBEstado.isSelected();
+       if(alumnoactual==null){
+           alumnoactual=new Alumno(dni,apellido,nombre,fechaNac,estado);
+           aludata.guardarAlumno(alumnoactual);
+       }else{
+           alumnoactual.setNombre(nombre);
+           alumnoactual.setApellido(apellido);
+           alumnoactual.setDni(dni);
+           alumnoactual.setFechaNac(fechaNac);
+           alumnoactual.setActivo(estado);
+           aludata.modificarAlumno(alumnoactual);
+           
+       }
+       
+   }
+   
+   private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        // TODO add your handling code here:
+        Limpiar();
+        alumnoactual=null;
+    }  
+    
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code her
         try {
@@ -182,12 +235,31 @@ public class Alumnos extends javax.swing.JInternalFrame {
             if (alumnoactual!=null) {
                 jTApellido.setText(alumnoactual.getApellido());
                 jTNombre.setText(alumnoactual.getNombre());
-                jBestado.setSelected(alumnoactual.isActivo());
+                JRBEstado.setSelected(alumnoactual.isActivo());
+                LocalDate lc= alumnoactual.getFechaNac();
+                java.util.Date date = java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                jDateChooser1.setDate(date);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showInternalMessageDialog(this,  "Debe ingresar un DNI valido");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTNombreActionPerformed
+
+     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt){
+         dispose();
+     }
+    
+    private void Limpiar(){
+jTApellido.setText("");
+jTDni.setText("");
+jTNombre.setText("");
+JRBEstado.setSelected(true);
+ jDateChooser1.setDate(new Date());     ////NO ME LEE EL CALENDARIO EN NINGUN REPOSITORIO///
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -197,7 +269,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private org.netbeans.modules.form.InvalidComponent jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
