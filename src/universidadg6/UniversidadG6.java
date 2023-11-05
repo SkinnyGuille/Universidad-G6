@@ -98,7 +98,7 @@ public class UniversidadG6 {
 //          System.out.println("Año: " + m1.getAnioMateria() );
 ///     //LISTAR MATERIA
          MateriaData materialista = new MateriaData();
-        List<Materia> listaMateria = materialista.listarMaterias();
+        List<Materia> listaMateria = materialista.listarMateria();
 //
       for (Materia materia : listaMateria) {
         System.out.println("Nombre: " + materia.getNombre() + ", Año "+ materia.getAnioMateria()+", ID: " + materia.getIdMateria());

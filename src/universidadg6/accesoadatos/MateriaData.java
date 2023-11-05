@@ -109,7 +109,7 @@ public class MateriaData {
         return materias;
     }
     
-    public List<Materia> listarMaterias() {
+    public List<Materia> listarMateria() {
         List<Materia> materias = new ArrayList<>();
         String sql = "SELECT * FROM materia WHERE estado = 1";
         

@@ -165,11 +165,11 @@ public class menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-              escritorio.removeAll();
+        escritorio.removeAll();
         escritorio.repaint();
-        CargarNotas nota = new CargarNotas();
-        nota.setVisible(true);
-        escritorio.add(nota);
+        CargarNotas notas = new CargarNotas();
+        notas.setVisible(true);
+        escritorio.add(notas);
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 

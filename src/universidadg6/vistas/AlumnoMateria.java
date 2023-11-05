@@ -151,7 +151,7 @@ private Connection con;
     }
     private void comboBox(){
         MateriaData mat= new MateriaData();
-        for ( Materia m : mat.listarMaterias()) {
+        for ( Materia m : mat.listarMateria()) {
             String i =m.getNombre();
             jCBMateria.addItem(i);
         }
@@ -171,7 +171,7 @@ private Connection con;
     String  materiaSeleccionada=(String) jCBMateria.getSelectedItem();
     ArrayList <Alumno> alumnos=new ArrayList();
              
-      for(Materia m: mat.listarMaterias()){
+      for(Materia m: mat.listarMateria()){
                 
            if(m.getNombre().equalsIgnoreCase(materiaSeleccionada)){
              
