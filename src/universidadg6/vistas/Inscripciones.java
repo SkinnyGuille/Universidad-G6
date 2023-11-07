@@ -4,17 +4,34 @@
  */
 package universidadg6.vistas;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import universidadg6.accesoadatos.AlumnoData;
+import universidadg6.accesoadatos.InscripcionData;
+import universidadg6.accesoadatos.MateriaData;
+import universidadg6.entidades.Alumno;
+import universidadg6.entidades.Materia;
+
 /**
  *
  * @author Familia
  */
 public class Inscripciones extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form Inscripciones
-     */
+private Connection con;
+private ArrayList<Alumno> alu;
+private ArrayList<Materia> listam;
+private InscripcionData idata;
+private AlumnoData adata;
+private MateriaData mdata;
+private DefaultTableModel modelo;
     public Inscripciones() {
         initComponents();
+        adata = new AlumnoData();
+        idata = new InscripcionData();
+        alu = (ArrayList<Alumno>)adata.listaAlumnos();
+        modelo = new DefaultTableModel();
+        cargarAlumnos();
     }
 
     /**
@@ -148,12 +165,18 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void CargarAlumnos(){
+        for (Alumno a : alu ) {
+            jCBAlumno.addItem(a);
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jCBAlumno;
+    private javax.swing.JComboBox<Alumno> jCBAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
