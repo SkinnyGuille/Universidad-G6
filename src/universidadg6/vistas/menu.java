@@ -141,6 +141,7 @@ public class menu extends javax.swing.JFrame {
         Alumnos alumno = new Alumnos();
         alumno.setVisible(true);
         escritorio.add(alumno);
+//        escritorio.moveToFront(alumno);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -157,9 +158,10 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
          escritorio.removeAll();
         escritorio.repaint();
-        Materia materia = new Materia();
+        Materias materia = new Materias();
         materia.setVisible(true);
         escritorio.add(materia);
+        escritorio.moveToFront(materia);
         
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -167,9 +169,12 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        CargarNotas notas = new CargarNotas();
+       CargarNotas notas= new CargarNotas();
         notas.setVisible(true);
+        notas.show();
         escritorio.add(notas);
+        escritorio.moveToFront(notas);
+        
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 

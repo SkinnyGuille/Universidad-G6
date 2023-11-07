@@ -40,8 +40,16 @@ private MateriaData mdata;
     /**
      * Creates new form CargarNotas
      */
- public void CargarNotas() {
-        initComponents();
+public CargarNotas(){
+initComponents();
+        CargarNota();
+        cargar();
+        cabecera();
+        borrarlista();
+}
+
+ public void  CargarNota() {
+       
         this.con= Conexion.getConexion();
         modelo=new DefaultTableModel();
         idata=new InscripcionData();
@@ -50,10 +58,10 @@ private MateriaData mdata;
         in=idata.obtenerInscripciones();
         ma= mdata.listarMateria();
         alu=adata.listaAlumnos();
-        cargar();
-        cabecera();
-        borrarlista();
-    }
+//        cargar();
+//        cabecera();
+//        borrarlista();
+ }
  
      public void cargar(){
         for(Alumno a:alu){
@@ -165,7 +173,7 @@ private MateriaData mdata;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
