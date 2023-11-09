@@ -187,8 +187,9 @@ public class InscripcionData {
     }
     public List<Alumno> ObtenerAlumnoPorMateria(int idmateria){
         ArrayList alumnosMateria = new ArrayList();
-        String sql="SELEC FROM a.idalumno, dni, nombre,apellido,fechaNacimiento, estado"
-                + "FROM inscripcion i, alumno a WHERE i.idalumno= a.idalumno AND idmateria = ? AND a.estado = 1";
+        String sql = "SELECT * FROM `alumno` WHERE `idalumno` IN (SELECT `idalumno` FROM inscripcion WHERE idmateria = ?)";
+//        String sql="SELECT * FROM a.idalumno, dni, nombre,apellido,fechaNacimiento, estado"
+//                + "FROM inscripcion i, alumno a WHERE i.idalumno= a.idalumno AND idmateria = ? AND a.estado = 1";
         
         try {
             PreparedStatement ps= con.prepareStatement(sql);

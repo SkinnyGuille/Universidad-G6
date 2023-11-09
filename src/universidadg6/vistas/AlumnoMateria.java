@@ -6,6 +6,7 @@ package universidadg6.vistas;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import universidadg6.accesoadatos.InscripcionData;
 import universidadg6.accesoadatos.MateriaData;
@@ -19,6 +20,8 @@ import universidadg6.entidades.Materia;
 public class AlumnoMateria extends javax.swing.JInternalFrame {
 private Connection con;
     private InscripcionData idata;
+ 
+    
     
     private DefaultTableModel modelo= new DefaultTableModel(){
         public boolean isCellEditable(int f, int c){
@@ -29,7 +32,7 @@ private Connection con;
     
     public AlumnoMateria(){
         initComponents();
-        comboBox();
+       comboBox();
         modificarTabla();
         llenarTabla();
         borrarlista();
@@ -44,7 +47,7 @@ private Connection con;
         jLabel2 = new javax.swing.JLabel();
         jCBMateria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTmat = new javax.swing.JTable();
         jBSalir = new javax.swing.JButton();
 
         jLabel1.setText("Listado de alumno por materia");
@@ -57,7 +60,7 @@ private Connection con;
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTmat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,7 +71,7 @@ private Connection con;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTmat);
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -122,11 +125,13 @@ private Connection con;
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // TODO add your handling code here:
          dispose();
+       
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCBMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriaActionPerformed
         // TODO add your handling code here:
-        llenarTabla();
+     llenarTabla();
+       
     }//GEN-LAST:event_jCBMateriaActionPerformed
 
 
@@ -136,7 +141,7 @@ private Connection con;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTmat;
     // End of variables declaration//GEN-END:variables
  
     
@@ -145,7 +150,7 @@ private Connection con;
         modelo.addColumn("Dni");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
-        jTable1.setModel(modelo);
+        jTmat.setModel(modelo);
         //
         
     }
@@ -164,6 +169,7 @@ private Connection con;
             }
             //
     }
+    
     private void llenarTabla() {
     borrarlista();
     MateriaData mat=new MateriaData();
@@ -182,8 +188,9 @@ private Connection con;
                }
             }
     }
+    }
     
    
-}}
+}
             
             

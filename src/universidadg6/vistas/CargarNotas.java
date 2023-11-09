@@ -76,7 +76,7 @@ initComponents();
         for(Object o:col){
             modelo.addColumn(o);
         }
-        jTable1.setModel(modelo);
+        jTmat.setModel(modelo);
     }
 
     /**
@@ -92,7 +92,7 @@ initComponents();
         jLabel2 = new javax.swing.JLabel();
         jCBAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTmat = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -106,7 +106,7 @@ initComponents();
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTmat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -117,7 +117,7 @@ initComponents();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTmat);
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -186,17 +186,17 @@ initComponents();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int fila = jTable1.getSelectedRow();
-        if(fila!=-1){            
-            int idma=(Integer)modelo.getValueAt(fila, 0);
-            Alumno idal=(Alumno)jCBAlumno.getSelectedItem();
-            int alumno=idal.getIdAlumno();
-            int nota=(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nota a modificar")));
-            idata.actualizarNota(alumno, idma, nota);
-            borrarlista();
-        }else{
-            JOptionPane.showMessageDialog(this, "Usted debe seleccionar un alumno");
-        }
+//        int fila = jTmat.getSelectedRow();
+//        if(fila!=-1){ 
+//            Alumno idal=(Alumno)jCBAlumno.getSelectedItem();          
+//            int idma=(Integer)modelo.getValueAt(fila, 0);
+//            int alumno=idal.getIdAlumno();
+//            int nota=(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nota a modificar")));
+//            idata.actualizarNota(alumno, idma, nota);
+//            borrarlista();
+//        }else{
+//            JOptionPane.showMessageDialog(this, "Usted debe seleccionar un alumno");
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
@@ -212,7 +212,7 @@ initComponents();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTmat;
     // End of variables declaration//GEN-END:variables
 
     public void borrarlista(){
