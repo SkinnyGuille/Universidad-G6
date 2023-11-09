@@ -97,12 +97,12 @@ public class UniversidadG6 {
 //            System.out.println("Nombre: " + m1.getNombre() );
 //          System.out.println("Año: " + m1.getAnioMateria() );
 ///     //LISTAR MATERIA
-         MateriaData materialista = new MateriaData();
-        List<Materia> listaMateria = materialista.listarMateria();
-//
-      for (Materia materia : listaMateria) {
-        System.out.println("Nombre: " + materia.getNombre() + ", Año "+ materia.getAnioMateria()+", ID: " + materia.getIdMateria());
-}      
+//         MateriaData materialista = new MateriaData();
+//        List<Materia> listaMateria = materialista.listarMateria();
+////
+//      for (Materia materia : listaMateria) {
+//        System.out.println("Nombre: " + materia.getNombre() + ", Año "+ materia.getAnioMateria()+", ID: " + materia.getIdMateria());
+//}      
 
 ////////    PRUEBAS DE LA CLASE INSCRIPCIONDATA////////////////
 
@@ -117,6 +117,11 @@ public class UniversidadG6 {
 //     Inscripcion inscri =  new Inscripcion(Gustavo,m1,9);
 //     ins.guardarInscripcion(inscri);
 
+ InscripcionData ins = new InscripcionData();
+        List<Materia> listaIns = ins.obtenerMateriaCursadas(0);
+//
+      for (Materia inscripcion : listaIns) {
+        System.out.println("Alumno"+inscripcion.getNombre());
 
     }
-}
+}}

@@ -12,6 +12,7 @@ import universidadg6.accesoadatos.AlumnoData;
 import universidadg6.accesoadatos.InscripcionData;
 import universidadg6.accesoadatos.MateriaData;
 import universidadg6.entidades.Alumno;
+import universidadg6.entidades.Inscripcion;
 import universidadg6.entidades.Materia;
 
 /**
@@ -20,7 +21,7 @@ import universidadg6.entidades.Materia;
  */
 public class Inscripciones extends javax.swing.JInternalFrame {
 private Connection con;
-private ArrayList<Alumno> alu;
+private ArrayList<Alumno> listaA;
 private ArrayList<Materia> listam;
 private InscripcionData idata;
 private AlumnoData adata;
@@ -28,10 +29,13 @@ private MateriaData mdata;
 private DefaultTableModel modelo;
     public Inscripciones() {
         initComponents();
-        adata = new AlumnoData();
+        
+        adata = new AlumnoData(); 
+        listaA = (ArrayList<Alumno>) adata.listaAlumnos();
         idata = new InscripcionData();
-        alu = (ArrayList<Alumno>)adata.listaAlumnos();     
         modelo = new DefaultTableModel();
+        CargarAlumnos();
+        ArmarCabecera();
         
     }
 
@@ -74,6 +78,11 @@ private DefaultTableModel modelo;
         });
 
         jRnoinscripta.setText("Materias no inscriptas");
+        jRnoinscripta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRnoinscriptaActionPerformed(evt);
+            }
+        });
 
         jTmateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,6 +98,7 @@ private DefaultTableModel modelo;
         jScrollPane1.setViewportView(jTmateria);
 
         jBinscribir.setText("Inscribir");
+        jBinscribir.setEnabled(false);
         jBinscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBinscribirActionPerformed(evt);
@@ -96,8 +106,19 @@ private DefaultTableModel modelo;
         });
 
         jBanular.setText("Anular inscripcion");
+        jBanular.setEnabled(false);
+        jBanular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBanularActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,12 +192,50 @@ private DefaultTableModel modelo;
 
     private void jBinscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBinscribirActionPerformed
         // TODO add your handling code here:
-        
-        
+        int filaseleccionada = jTmateria.getSelectedRow();
+        if (filaseleccionada!= -1 ) {
+            Alumno a = (Alumno) jCBAlumno.getSelectedItem();
+            int idMateria = (Integer)modelo.getValueAt(filaseleccionada, 0);
+            String nombreMateria = (String)modelo.getValueAt(filaseleccionada, 1);
+            int anio = (Integer)modelo.getValueAt(filaseleccionada, 2);
+            Materia m = new Materia(idMateria,nombreMateria,anio, true);
+            Inscripcion i = new Inscripcion(a,m,0);
+            idata.guardarInscripcion(i);
+            BorrarFilaTabla();
+                    
+        }   
     }//GEN-LAST:event_jBinscribirActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+         dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jRnoinscriptaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRnoinscriptaActionPerformed
+        // TODO add your handling code here:
+        BorrarFilaTabla();
+       jRinscriptas.setSelected(false);
+       
+      CargarDatosNoInscriptas ();
+      jBanular.setEnabled(false);     
+      jBinscribir.setEnabled(true);
+    }//GEN-LAST:event_jRnoinscriptaActionPerformed
+
+    private void jBanularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBanularActionPerformed
+        // TODO add your handling code here:
+        int filaseleccionada = jTmateria.getSelectedRow();
+        if (filaseleccionada!= -1) {
+            Alumno al =(Alumno)jCBAlumno.getSelectedItem();
+            int idMateria = (Integer)modelo.getValueAt(filaseleccionada, 0);
+            idata.borrarInscripcioMateriaAlumno(al.getIdAlumno(), idMateria);
+            BorrarFilaTabla();
+        }  
+        
+    }//GEN-LAST:event_jBanularActionPerformed
+
     public void CargarAlumnos(){
-        for (Alumno a : alu ) {
+        for (Alumno a : listaA ) {
             jCBAlumno.addItem(a);
             
         }

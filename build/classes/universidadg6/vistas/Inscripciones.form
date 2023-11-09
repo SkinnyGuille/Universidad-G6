@@ -122,6 +122,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Materias no inscriptas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRnoinscriptaActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -147,6 +150,7 @@
     <Component class="javax.swing.JButton" name="jBinscribir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inscribir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBinscribirActionPerformed"/>
@@ -155,12 +159,19 @@
     <Component class="javax.swing.JButton" name="jBanular">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anular inscripcion"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBanularActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCBAlumno">
       <Properties>
